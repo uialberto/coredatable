@@ -15,6 +15,7 @@
     <PackageReference Include="JqueryDataTables.ServerSide.AspNetCoreWeb" Version="3.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.2" />
+    <PackageReference Include="Uibasoft.Community.Comunes" Version="2.0.0" />
   </ItemGroup>
 
 

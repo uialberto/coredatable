@@ -1,6 +1,6 @@
 Librerias de Cliente
 
--jquery@3.3.1
+-jquery@3.4.1
 -moment.js@2.24.0
 -twitter-bootstrap@4.4.1
 -datatables@1.10.20
