@@ -1,8 +1,67 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model CoreWebApp.ViewModel.PersonaViewModel
+@{
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Jquery DataTables - Asp.Net Core Server Side</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/datatables/css/buttons.dataTables.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    @Html.AntiForgeryToken();
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-center align-content-center">
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="text-center">Ejemplo de Listado de Personas</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <input type="text" id="txtExternalSearch" class="form-control" placeholder="External Search" aria-label="External Search" aria-describedby="btnExternalSearch">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="btnExternalSearch">Search</button>
+                                </div>
+                            </div>
+                            <jquery-datatables id="tbl-peoples"
+                                               class="table table-sm table-bordered table-hover"
+                                               model="@Model"
+                                               thead-class="text-center"
+                                               enable-searching="true"
+                                               search-row-th-class="p-0"
+                                               search-input-class="form-control form-control-sm"
+                                               search-input-style=""
+                                               search-input-placeholder-prefix="Buscar">
+                            </jquery-datatables>
+
+                            @*<partial name="_Create" model="@(new PersonaResult())" />*@
+                            <div id="editPartial"></div>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-center"> &copy; UIBASOFT - Alberto Baigorria.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/momentjs/moment.min.js" asp-append-version="true"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/js/dataTables.buttons.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

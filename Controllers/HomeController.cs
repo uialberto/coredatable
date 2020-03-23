@@ -15,10 +15,10 @@ using CoreWebApp.DataTransfer.ModelView.Home;
 using CoreWebApp.DataTransfer.Dtos;
 using System.Data.SqlClient;
 using CoreWebApp.DataTransfer.ModelView.Home.Result;
+using CoreWebApp.ViewModel;
 
 namespace CoreWebApp.Controllers
-{
-    [Route("home")]
+{   
     public class HomeController : Controller
     {
         private readonly IServicePersonas _service;
@@ -34,10 +34,10 @@ namespace CoreWebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new PersonaViewModel());
         }
         
-        [HttpPost("peoples")]
+        [HttpPost]
         public async Task<IActionResult> SearchPersonas([FromBody]JqueryDataTablesParameters param)
         {
             try
@@ -103,18 +103,22 @@ namespace CoreWebApp.Controllers
 
                 var list = res.Elements;
 
-                var data = list.Select(ele => new PersonaResult
+                var data = list.Select(ele => new PersonaViewModel
                 {
                     Codigo = ele.Id.ToString(),
                     Nombres = ele.Nombres,
                     Apellidos = ele.Apellidos,
-                    Oficina = ele.Oficina
+                    Oficina = ele.Oficina,
+                    Experiencia = ele.Experiencia,
+                    FechaInicio = ele.FechaInicio,
+                    Salario = ele.Salario,
+                    Cargo = ele.Cargo
                 }).ToList();
 
                 var recordsFiltered = res.TotalFiltered;
                 var recordsTotal = res.TotalElements;
 
-                return new JsonResult(new JqueryDataTablesResult<PersonaResult>
+                return new JsonResult(new JqueryDataTablesResult<PersonaViewModel>
                 {
                     Draw = param.Draw,
                     Data = data,

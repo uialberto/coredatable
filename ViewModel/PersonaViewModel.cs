@@ -12,7 +12,7 @@ namespace CoreWebApp.ViewModel
     public class PersonaViewModel
     {
         [JqueryDataTableColumn(Order = 1)]
-        public long Id { get; set; }
+        public string Codigo { get; set; }
         [JqueryDataTableColumn(Order = 2)]
         [SearchableString(EntityProperty = "Nombres,Apellidos")]
         [Sortable(EntityProperty = "Nombres,Apellidos", Default = true)]

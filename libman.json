@@ -7,10 +7,6 @@
       "destination": "wwwroot/lib/twitter-bootstrap/"
     },
     {
-      "library": "datatables@1.10.20",
-      "destination": "wwwroot/lib/datatables/"
-    },
-    {
       "library": "moment.js@2.24.0",
       "destination": "wwwroot/lib/moment.js/"
     },
