@@ -3,16 +3,20 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "twitter-bootstrap@4.4.1",
-      "destination": "wwwroot/lib/twitter-bootstrap/"
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/"
     },
     {
       "library": "moment.js@2.24.0",
       "destination": "wwwroot/lib/moment.js/"
     },
     {
-      "library": "jquery@3.4.1",
-      "destination": "wwwroot/lib/jquery/"
+      "library": "twitter-bootstrap@4.4.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "datatables@1.10.20",
+      "destination": "wwwroot/lib/datatables/"
     }
   ]
 }

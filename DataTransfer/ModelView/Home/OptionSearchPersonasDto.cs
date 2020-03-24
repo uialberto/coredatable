@@ -8,10 +8,14 @@ namespace CoreWebApp.DataTransfer.ModelView.Home
 {
     public enum PersonaOrderColumn
     {
-        Codigo,
-        Nombres,
-        Apellidos,
-        Oficina
+        Codigo = 0,
+        Nombres = 1,
+        Apellidos = 2,
+        Cargo = 3,
+        Oficina = 4,
+        Experiencia = 5,
+        FechaInicio = 6,
+        Salario = 7
     }
     public class OptionSearchPersonasDto
     {

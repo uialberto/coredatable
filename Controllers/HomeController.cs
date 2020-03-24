@@ -48,39 +48,56 @@ namespace CoreWebApp.Controllers
 
                 var pageIndex = (param.Start / param.Length) + 1;
                 var pageSize = param.Length;
-                var sortedColumns = param.Columns;
+                var sortedColumns = param.Order;
                 var colum = sortedColumns.FirstOrDefault();
                 var orderBy = PersonaOrderColumn.Codigo;
                 var orderIsAscending = true;                
                 if (colum != null)
                 {
-                    var dataColum = colum.Data;
+                    var dataColum = colum.Column;
 
                     switch (dataColum)
                     {
-                        case "Codigo":
+                        case 0:
                             {
                                 orderBy = PersonaOrderColumn.Codigo;
                             }
                             break;
-                        case "Nombres":
+                        case 1:
                             {
                                 orderBy = PersonaOrderColumn.Nombres;
                             }
                             break;
-                        case "Apellidos":
+                        case 2:
                             {
                                 orderBy = PersonaOrderColumn.Apellidos;
                             }
                             break;
-                        case "Oficina":
+                        case 3:
+                            {
+                                orderBy = PersonaOrderColumn.Cargo;
+                            }break;
+                        case 4:
                             {
                                 orderBy = PersonaOrderColumn.Oficina;
+                            }break;
+                        case 5:
+                            {
+                                orderBy = PersonaOrderColumn.Experiencia;
+                            }
+                            break;
+                        case 6:
+                            {
+                                orderBy = PersonaOrderColumn.FechaInicio;
+                            }
+                            break;
+                        case 7:
+                            {
+                                orderBy = PersonaOrderColumn.Salario;
                             }
                             break;
                     }
-                    orderIsAscending = true;
-                    //sucOrderDir = param.SortOrder == Column.OrderDirection.Ascendant ? true : false;//SortOrder.Ascending : SortOrder.Descending;
+                    orderIsAscending = colum.Dir == DTOrderDir.ASC ? true : false;
                 }
 
                 #endregion

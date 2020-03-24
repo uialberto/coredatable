@@ -81,6 +81,24 @@ namespace CoreWebApp.AppServices.Core.Impl
                            : list.OrderByDescending(ele => ele.Oficina).ThenBy(ele => ele.Oficina).ToList();
                     }
                     break;
+                case PersonaOrderColumn.Salario:
+                    {
+                        list = dto.IsAscending ? list.OrderBy(ele => ele.Salario).ThenBy(ele => ele.Salario).ToList()
+                           : list.OrderByDescending(ele => ele.Salario).ThenBy(ele => ele.Salario).ToList();
+                    }
+                    break;
+                case PersonaOrderColumn.Experiencia:
+                    {
+                        list = dto.IsAscending ? list.OrderBy(ele => ele.Experiencia).ThenBy(ele => ele.Experiencia).ToList()
+                           : list.OrderByDescending(ele => ele.Experiencia).ThenBy(ele => ele.Experiencia).ToList();
+                    }
+                    break;
+                case PersonaOrderColumn.FechaInicio:
+                    {
+                        list = dto.IsAscending ? list.OrderBy(ele => ele.FechaInicio).ThenBy(ele => ele.FechaInicio).ToList()
+                           : list.OrderByDescending(ele => ele.FechaInicio).ThenBy(ele => ele.FechaInicio).ToList();
+                    }
+                    break;
                 default:
                     {
                         list = dto.IsAscending ? list.OrderBy(ele => ele.Id).ThenBy(ele => ele.Id).ToList()

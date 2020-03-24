@@ -13,37 +13,40 @@ namespace CoreWebApp.ViewModel
     {
         [JqueryDataTableColumn(Order = 1)]
         public string Codigo { get; set; }
-        [JqueryDataTableColumn(Order = 2)]
-        [SearchableString(EntityProperty = "Nombres,Apellidos")]
-        [Sortable(EntityProperty = "Nombres,Apellidos", Default = true)]
+        //[JqueryDataTableColumn(Order = 2)]
+        [JqueryDataTableColumn(Exclude = true)]
+        //[SearchableString(EntityProperty = "Nombres,Apellidos")]
+        //[Sortable(EntityProperty = "Nombres,Apellidos", Default = true)]
         public string NombreCompleto { get; set; }
-        [JqueryDataTableColumn(Exclude = true)]
+        //[JqueryDataTableColumn(Exclude = true)]
+        [JqueryDataTableColumn(Order = 2)]
         public string Nombres { get; set; }
-        [JqueryDataTableColumn(Exclude = true)]
-        public string Apellidos { get; set; }
+        //[JqueryDataTableColumn(Exclude = true)]
         [JqueryDataTableColumn(Order = 3)]
+        public string Apellidos { get; set; }
+        [JqueryDataTableColumn(Order = 4)]
         [SearchableEnum(typeof(Position))]
         [Sortable]
         public Position Cargo { get; set; }
         [Display(Name = "Oficina")]
-        [JqueryDataTableColumn(Order = 4)]
+        [JqueryDataTableColumn(Order = 5)]
         [SearchableString(EntityProperty = "Oficina")]
         [Sortable(EntityProperty = "Oficina")]
         public string Oficina { get; set; }
-        [JqueryDataTableColumn(Order = 5)]
+        [JqueryDataTableColumn(Order = 6)]
         [SearchableShort]
         [Sortable]
         public short? Experiencia { get; set; }
         [DisplayName("Fecha")]
-        [JqueryDataTableColumn(Order = 6)]
+        [JqueryDataTableColumn(Order = 7)]
         [SearchableDateTime(EntityProperty = "FechaInicio")]
         [Sortable(EntityProperty = "FechaInicio")]
         public DateTime? FechaInicio { get; set; }
-        [JqueryDataTableColumn(Order = 7)]
+        [JqueryDataTableColumn(Order = 8)]
         [SearchableLong]
         [Sortable]
         public decimal? Salario { get; set; }
-        [JqueryDataTableColumn(Order = 8)]
+        [JqueryDataTableColumn(Order = 9)]
         public string Action { get; set; }
     }
 }
