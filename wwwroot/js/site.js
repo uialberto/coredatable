@@ -140,8 +140,8 @@ $(() => {
                     data: "Action",
                     render: function (data, type, row) {
                         return `<div>
-                                    <button type="button" class="btn btn-sm btn-info mr-2 btnEdit" data-key="${row.Id}">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-danger btnDelete" data-key="${row.Id}">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-info mr-2 btnEdit" data-key="${row.Codigo}">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-danger btnDelete" data-key="${row.Codigo}">Delete</button>
                                 </div>`;
                     }
                 }
