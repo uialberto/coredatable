@@ -155,6 +155,7 @@ $(() => {
                 .on('keyup',
                     function (e)
                     {
+                        console.log(e);
                         if (e.keyCode === 13)
                         {
                             //table.column($(this).parent().index() + ':visible').search(this.value).draw();
@@ -249,6 +250,13 @@ $(() => {
             console.log(data);
             //table.column('0:visible').search(data).draw(); // Busqueda Independiente por Columna
             table.search(data).draw();
+        });
+
+        $('#txtExternalSearch').keyup(function (e) {
+            if (e.keyCode === 13) {
+                //table.column($(this).parent().index() + ':visible').search(this.value).draw();
+                table.search(this.value).draw();
+            }
         });
 
     }
