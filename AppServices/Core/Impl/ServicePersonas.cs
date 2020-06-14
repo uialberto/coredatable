@@ -27,6 +27,8 @@ namespace CoreWebApp.AppServices.Core.Impl
             _mapperConfig = pMapperConfig;
         }
 
+       
+
         public async Task<ResultPage<PersonaDto>> BuscarAsync(OptionSearchPersonasDto dto)
         {
             var result = new ResultPage<PersonaDto>();
@@ -140,6 +142,30 @@ namespace CoreWebApp.AppServices.Core.Impl
             var entity = await _uow.Personas.FindAsync(dto.Id);
             _uow.Personas.Remove(entity);
             await _uow.SaveChangesAsync();
+            return result;
+        }
+
+        public async Task<ResultOperation> ActualizarAsync(PersonaDto dto)
+        {
+            var result = new ResultOperation();
+            //var entity = await _uow.Personas.AsNoTracking()
+            //                             .Include(x => x.Propiedad_One)
+            //                             .ThenInclude(y => y.Propiedad_Two)
+            //                             .SingleOrDefaultAsync(x => x.Id.Equals(dto.Id));
+            var entity = await _uow.Personas.AsNoTracking()
+                                       .SingleOrDefaultAsync(x => x.Id.Equals(dto.Id));
+            if (entity != null)
+            {
+                entity.Nombres = dto.Nombres;
+                entity.Apellidos = dto.Apellidos;
+                entity.Cargo = dto.Cargo;
+                entity.Oficina = dto.Oficina;
+                entity.Experiencia = dto.Experiencia;
+                entity.FechaInicio = dto.FechaInicio;
+                entity.Salario = dto.Salario;
+                _uow.Personas.Update(entity);
+                await _uow.SaveChangesAsync();
+            }
             return result;
         }
 

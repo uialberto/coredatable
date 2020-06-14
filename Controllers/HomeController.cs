@@ -122,13 +122,19 @@ namespace CoreWebApp.Controllers
             return PartialView("_Edit", viewModel);
         }
 
-        //[HttpPut]
-        //public async Task<NoContentResult> Edit(Demo item)
-        //{
-        //    await _demoService.UpdateDataAsync(item);
+        [HttpPut]
+        public async Task<IActionResult> Edit(PersonaViewModel item)
+        {
+            var paramDto = _mapper.Map<PersonaDto>(item);
+            var result = await _service.ActualizarAsync(paramDto);
+            if (result.HasErrors)
+            {
+                //ToDo Sample
+                return new JsonResult(new { error = "Internal Server Error" });
+            }
 
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {

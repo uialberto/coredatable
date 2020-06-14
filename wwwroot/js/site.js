@@ -189,7 +189,7 @@ $(() => {
             .on('click', '.btnEdit', function () {
                 const id = $(this).attr('data-key');
 
-                fetch(`/Home/Edit/${id}`,
+                fetch(`/home/edit/${id}`,
                     {
                         method: 'GET',
                         cache: 'no-cache'
@@ -206,24 +206,24 @@ $(() => {
                     });
             });
 
-        //$(document)
-        //    .off('click', '#btnUpdate')
-        //    .on('click', '#btnUpdate', function () {
-        //        fetch('/Home/Edit/',
-        //            {
-        //                method: 'PUT',
-        //                cache: 'no-cache',
-        //                body: new URLSearchParams(new FormData(document.querySelector('#frmEdit')))
-        //            })
-        //            .then((response) => {
-        //                table.ajax.reload();
-        //                $('#editModal').modal('hide');
-        //                $('#editPartial').html('');
-        //            })
-        //            .catch((error) => {
-        //                console.log(error);
-        //            });
-        //    });
+        $(document)
+            .off('click', '#btnUpdate')
+            .on('click', '#btnUpdate', function () {
+                fetch('/home/edit/',
+                    {
+                        method: 'PUT',
+                        cache: 'no-cache',
+                        body: new URLSearchParams(new FormData(document.querySelector('#frmEdit')))
+                    })
+                    .then((response) => {
+                        table.ajax.reload();
+                        $('#editModal').modal('hide');
+                        $('#editPartial').html('');
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            });
 
         $(document)
             .off('click', '.btnDelete')
