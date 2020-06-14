@@ -27,7 +27,7 @@ namespace CoreWebApp.AppServices.Core.Impl
             _mapperConfig = pMapperConfig;
         }
 
-        public async Task<ResultPage<PersonaDto>> Buscar(OptionSearchPersonasDto dto)
+        public async Task<ResultPage<PersonaDto>> BuscarAsync(OptionSearchPersonasDto dto)
         {
             var result = new ResultPage<PersonaDto>();
             var totales = _uow.Personas.Count();
@@ -131,6 +131,15 @@ namespace CoreWebApp.AppServices.Core.Impl
             result.TotalPage = (result.TotalElements / result.PageSize) + (result.TotalElements % result.PageSize == 0 ? 0 : 1);
             result.TotalFiltered = totalFiltered;
 
+            return result;
+        }
+
+        public async Task<ResultOperation> EliminarAsync(PersonaDto dto)
+        {
+            var result = new ResultOperation();
+            var entity = await _uow.Personas.FindAsync(dto.Id);
+            _uow.Personas.Remove(entity);
+            await _uow.SaveChangesAsync();
             return result;
         }
     }

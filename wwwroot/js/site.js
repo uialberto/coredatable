@@ -224,25 +224,25 @@ $(() => {
         //            });
         //    });
 
-        //$(document)
-        //    .off('click', '.btnDelete')
-        //    .on('click', '.btnDelete', function () {
-        //        const id = $(this).attr('data-key');
+        $(document)
+            .off('click', '.btnDelete')
+            .on('click', '.btnDelete', function () {
+                const id = $(this).attr('data-key');
 
-        //        if (confirm('Are you sure?')) {
-        //            fetch(`/Home/Delete/${id}`,
-        //                {
-        //                    method: 'DELETE',
-        //                    cache: 'no-cache'
-        //                })
-        //                .then((response) => {
-        //                    table.ajax.reload();
-        //                })
-        //                .catch((error) => {
-        //                    console.log(error);
-        //                });
-        //        }
-        //    });
+                if (confirm('Esta seguro de eliminar el registro?')) {
+                    fetch(`/Home/Delete/${id}`,
+                        {
+                            method: 'DELETE',
+                            cache: 'no-cache'
+                        })
+                        .then((response) => {
+                            table.ajax.reload();
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }
+            });
 
         $('#btnExternalSearch').click(function ()
         {

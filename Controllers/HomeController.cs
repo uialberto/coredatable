@@ -51,52 +51,12 @@ namespace CoreWebApp.Controllers
                 var sortedColumns = param.Order;
                 var colum = sortedColumns.FirstOrDefault();
                 var orderBy = PersonaOrderColumn.Codigo;
+                
                 var orderIsAscending = true;                
                 if (colum != null)
                 {
-                    var dataColum = colum.Column;
-
-                    switch (dataColum)
-                    {
-                        case 0:
-                            {
-                                orderBy = PersonaOrderColumn.Codigo;
-                            }
-                            break;
-                        case 1:
-                            {
-                                orderBy = PersonaOrderColumn.Nombres;
-                            }
-                            break;
-                        case 2:
-                            {
-                                orderBy = PersonaOrderColumn.Apellidos;
-                            }
-                            break;
-                        case 3:
-                            {
-                                orderBy = PersonaOrderColumn.Cargo;
-                            }break;
-                        case 4:
-                            {
-                                orderBy = PersonaOrderColumn.Oficina;
-                            }break;
-                        case 5:
-                            {
-                                orderBy = PersonaOrderColumn.Experiencia;
-                            }
-                            break;
-                        case 6:
-                            {
-                                orderBy = PersonaOrderColumn.FechaInicio;
-                            }
-                            break;
-                        case 7:
-                            {
-                                orderBy = PersonaOrderColumn.Salario;
-                            }
-                            break;
-                    }
+                    var orderByAux = (PersonaOrderColumn)colum.Column;
+                    orderBy = orderByAux;
                     orderIsAscending = colum.Dir == DTOrderDir.ASC ? true : false;
                 }
 
@@ -111,7 +71,7 @@ namespace CoreWebApp.Controllers
                     OrderBy = orderBy,                    
                 };
 
-                var res = await _service.Buscar(optionSearch);
+                var res = await _service.BuscarAsync(optionSearch);
                 
                 if (res.HasErrors)
                 {
@@ -150,6 +110,18 @@ namespace CoreWebApp.Controllers
                 Console.Write(e.Message);
                 return new JsonResult(new { error = "Internal Server Error" });
             }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var result = await _service.EliminarAsync(new PersonaDto() {Id = id });
+            if (result.HasErrors)
+            {
+                //ToDo Sample
+                return new JsonResult(new { error = "Internal Server Error" });
+            }
+            return NoContent();
         }
 
         public IActionResult Privacy()

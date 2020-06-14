@@ -10,6 +10,7 @@ namespace CoreWebApp.AppServices.Core
 {
     public interface IServicePersonas
     {
-        Task<ResultPage<PersonaDto>> Buscar(OptionSearchPersonasDto dto);
+        Task<ResultPage<PersonaDto>> BuscarAsync(OptionSearchPersonasDto dto);
+        Task<ResultOperation> EliminarAsync(PersonaDto dto);
     }
 }
