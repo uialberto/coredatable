@@ -132,6 +132,7 @@ $(() => {
                 },
                 {
                     data: "Salario",
+                    render: $.fn.dataTable.render.number('', '.', 3),
                     name: "lte"
                 },
                 {
@@ -183,27 +184,27 @@ $(() => {
         //            });
         //    });
 
-        //$(document)
-        //    .off('click', '.btnEdit')
-        //    .on('click', '.btnEdit', function () {
-        //        const id = $(this).attr('data-key');
+        $(document)
+            .off('click', '.btnEdit')
+            .on('click', '.btnEdit', function () {
+                const id = $(this).attr('data-key');
 
-        //        fetch(`/Home/Edit/${id}`,
-        //            {
-        //                method: 'GET',
-        //                cache: 'no-cache'
-        //            })
-        //            .then((response) => {
-        //                return response.text();
-        //            })
-        //            .then((result) => {
-        //                $('#editPartial').html(result);
-        //                $('#editModal').modal('show');
-        //            })
-        //            .catch((error) => {
-        //                console.log(error);
-        //            });
-        //    });
+                fetch(`/Home/Edit/${id}`,
+                    {
+                        method: 'GET',
+                        cache: 'no-cache'
+                    })
+                    .then((response) => {
+                        return response.text();
+                    })
+                    .then((result) => {
+                        $('#editPartial').html(result);
+                        $('#editModal').modal('show');
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            });
 
         //$(document)
         //    .off('click', '#btnUpdate')

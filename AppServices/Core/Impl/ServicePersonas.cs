@@ -142,5 +142,22 @@ namespace CoreWebApp.AppServices.Core.Impl
             await _uow.SaveChangesAsync();
             return result;
         }
+
+        public async Task<ResultElement<PersonaDto>> ObtenerAsync(PersonaDto dto)
+        {
+            var result = new ResultElement<PersonaDto>();
+            //var entity = await _uow.Personas.AsNoTracking()
+            //                             .Include(x => x.Propiedad_One)
+            //                             .ThenInclude(y => y.Propiedad_Two)
+            //                             .SingleOrDefaultAsync(x => x.Id.Equals(dto.Id));
+            var entity = await _uow.Personas.AsNoTracking()                                       
+                                       .SingleOrDefaultAsync(x => x.Id.Equals(dto.Id));
+            if (entity != null)
+            {
+                result.Element = _mapperConfig.CreateMapper().Map<PersonaDto>(entity);
+            }            
+            return result;
+
+        }
     }
 }

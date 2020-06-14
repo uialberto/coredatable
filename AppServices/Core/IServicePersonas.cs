@@ -12,5 +12,6 @@ namespace CoreWebApp.AppServices.Core
     {
         Task<ResultPage<PersonaDto>> BuscarAsync(OptionSearchPersonasDto dto);
         Task<ResultOperation> EliminarAsync(PersonaDto dto);
+        Task<ResultElement<PersonaDto>> ObtenerAsync(PersonaDto dto);
     }
 }

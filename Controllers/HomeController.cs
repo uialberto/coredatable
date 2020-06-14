@@ -111,7 +111,24 @@ namespace CoreWebApp.Controllers
                 return new JsonResult(new { error = "Internal Server Error" });
             }
         }
+        public async Task<ActionResult> Edit(long id)
+        {
+            var viewModel = new PersonaViewModel();
+            var result = await _service.ObtenerAsync( new PersonaDto() {Id = id });
+            if (result.Element != null)
+            { 
+                viewModel = _mapper.Map<PersonaViewModel>(result.Element);
+            }
+            return PartialView("_Edit", viewModel);
+        }
 
+        //[HttpPut]
+        //public async Task<NoContentResult> Edit(Demo item)
+        //{
+        //    await _demoService.UpdateDataAsync(item);
+
+        //    return NoContent();
+        //}
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {

@@ -32,7 +32,7 @@ namespace CoreWebApp
                    Oficina = "Santa Cruz",
                     Experiencia = short.Parse(new Random().Next(1,20).ToString()),
                    FechaInicio = new DateTime(new Random().Next(1900,2020),01,01),
-                   Salario = new Random().Next(1000,15000),
+                  Salario = (new Random().Next(1000,15000)) + 0.55123m,
                 },
                  new Persona
                 {
@@ -42,7 +42,7 @@ namespace CoreWebApp
                    Oficina = "Santa Cruz",
                     Experiencia = short.Parse(new Random().Next(1,20).ToString()),
                    FechaInicio = new DateTime(new Random().Next(1900,2020),01,01),
-                   Salario = new Random().Next(1000,15000),
+                   Salario = (new Random().Next(1000,15000)) + 0.55123m,
                 },
                     new Persona
                 {
@@ -52,7 +52,7 @@ namespace CoreWebApp
                    Oficina = "Santa Cruz",
                    Experiencia = short.Parse(new Random().Next(1,20).ToString()),
                   FechaInicio = new DateTime(new Random().Next(1900,2020),01,01),
-                   Salario = new Random().Next(1000,15000),
+                    Salario = (new Random().Next(1000,15000)) + 0.55123m,
                 },
                       new Persona
                 {
@@ -62,7 +62,7 @@ namespace CoreWebApp
                    Oficina = "Santa Cruz",
                     Experiencia = short.Parse(new Random().Next(1,20).ToString()),
                     FechaInicio = new DateTime(new Random().Next(1900,2020),01,01),
-                   Salario = new Random().Next(1000,15000),
+                    Salario = (new Random().Next(1000,15000)) + 0.55123m,
                 },
                         new Persona
                 {

@@ -42,6 +42,9 @@ namespace CoreWebApp.ViewModel
         [SearchableDateTime(EntityProperty = "FechaInicio")]
         [Sortable(EntityProperty = "FechaInicio")]
         public DateTime? FechaInicio { get; set; }
+        
+        //[DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)] // Para Monedas
+        [DisplayFormat(DataFormatString = "{0:F3}", ApplyFormatInEditMode = true)] // Para Monedas
         [JqueryDataTableColumn(Order = 8)]
         [SearchableLong]
         [Sortable]
