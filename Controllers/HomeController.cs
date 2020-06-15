@@ -16,6 +16,7 @@ using CoreWebApp.DataTransfer.Dtos;
 using System.Data.SqlClient;
 using CoreWebApp.DataTransfer.ModelView.Home.Result;
 using CoreWebApp.ViewModel;
+using Fingers10.ExcelExport.ActionResults;
 
 namespace CoreWebApp.Controllers
 {   
@@ -42,7 +43,7 @@ namespace CoreWebApp.Controllers
         {
             try
             {
-                HttpContext.Session.SetString(nameof(JqueryDataTablesParameters), JsonSerializer.Serialize(param));
+               
 
                 #region Paginacion y Ordenacion
 
@@ -70,6 +71,8 @@ namespace CoreWebApp.Controllers
                     PageSize = pageSize,
                     OrderBy = orderBy,                    
                 };
+
+                HttpContext.Session.SetString(nameof(OptionSearchPersonasDto), JsonSerializer.Serialize(optionSearch));
 
                 var res = await _service.BuscarAsync(optionSearch);
                 
@@ -110,6 +113,25 @@ namespace CoreWebApp.Controllers
                 Console.Write(e.Message);
                 return new JsonResult(new { error = "Internal Server Error" });
             }
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetExcel()
+        {
+            var optionSearch = HttpContext.Session.GetString(nameof(OptionSearchPersonasDto));
+            var result = await _service.BuscarAsync(JsonSerializer.Deserialize<OptionSearchPersonasDto>(optionSearch));
+            var list = result.Elements;
+            var data = list.Select(ele => new PersonaExcelResult
+            {
+                Id = ele.Id,
+                Nombres = ele.Nombres,
+                Apellidos = ele.Apellidos,
+                Oficina = ele.Oficina,
+                Experiencia = ele.Experiencia,
+                FechaInicio = ele.FechaInicio,
+                Salario = ele.Salario,                
+            });
+            var fileName = $"Personas_{Guid.NewGuid()}";
+            return new ExcelResult<PersonaExcelResult>(data,"Personas", fileName);
         }
 
         [HttpPost]
