@@ -14,5 +14,6 @@ namespace CoreWebApp.AppServices.Core
         Task<ResultOperation> EliminarAsync(PersonaDto dto);
         Task<ResultElement<PersonaDto>> ObtenerAsync(PersonaDto dto);
         Task<ResultOperation> ActualizarAsync(PersonaDto dto);
+        Task<ResultOperation> CrearAsync(PersonaDto dto);
     }
 }

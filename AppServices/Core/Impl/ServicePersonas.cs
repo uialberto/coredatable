@@ -185,5 +185,14 @@ namespace CoreWebApp.AppServices.Core.Impl
             return result;
 
         }
+
+        public async Task<ResultOperation> CrearAsync(PersonaDto dto)
+        {
+            var result = new ResultOperation();            
+            var entity = _mapperConfig.CreateMapper().Map<Persona>(dto);
+            await _uow.Personas.AddAsync(entity);
+            await _uow.SaveChangesAsync();            
+            return result;
+        }
     }
 }

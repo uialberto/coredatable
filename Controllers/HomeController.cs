@@ -111,6 +111,19 @@ namespace CoreWebApp.Controllers
                 return new JsonResult(new { error = "Internal Server Error" });
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(PersonaViewModel item)
+        {
+            var paramDto = _mapper.Map<PersonaDto>(item);
+            var result = await _service.CrearAsync(paramDto);
+            if (result.HasErrors)
+            {
+                //ToDo Sample
+                return new JsonResult(new { error = "Internal Server Error" });
+            }
+            return NoContent();
+        }
         public async Task<ActionResult> Edit(long id)
         {
             var viewModel = new PersonaViewModel();

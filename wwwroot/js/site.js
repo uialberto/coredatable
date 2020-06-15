@@ -48,7 +48,7 @@ $(() => {
                     text: 'Excel',
                     className: 'btn btn-sm btn-outline-dark',
                     action: function (e, dt, node, config) {
-                        window.location.href = "/Home/GetExcel";
+                        window.location.href = "/home/GetExcel";
                     },
                     init: function (api, node, config) {
                         $(node).removeClass('dt-button');
@@ -58,7 +58,7 @@ $(() => {
                     text: 'Imprimir',
                     className: 'btn btn-sm btn-outline-dark',
                     action: function (e, dt, node, config) {
-                        window.location.href = "/Home/GetExcel";
+                        window.location.href = "/home/GetImprimir";
                     },
                     init: function (api, node, config) {
                         $(node).removeClass('dt-button');
@@ -88,7 +88,6 @@ $(() => {
                     additionalValues[0] = "Additional Parameters 1";
                     additionalValues[1] = "Additional Parameters 2";
                     data.AdditionalValues = additionalValues;
-
                     return JSON.stringify(data);
                 }
             },
@@ -165,24 +164,24 @@ $(() => {
                     });
         });
 
-        //$(document)
-        //    .off('click', '#btnCreate')
-        //    .on('click', '#btnCreate', function () {
-        //        fetch('/Home/Create/',
-        //            {
-        //                method: 'POST',
-        //                cache: 'no-cache',
-        //                body: new URLSearchParams(new FormData(document.querySelector('#frmCreate')))
-        //            })
-        //            .then((response) => {
-        //                table.ajax.reload();
-        //                $('#createModal').modal('hide');
-        //                document.querySelector('#frmCreate').reset();
-        //            })
-        //            .catch((error) => {
-        //                console.log(error);
-        //            });
-        //    });
+        $(document)
+            .off('click', '#btnCreate')
+            .on('click', '#btnCreate', function () {
+                fetch('/home/create/',
+                    {
+                        method: 'POST',
+                        cache: 'no-cache',
+                        body: new URLSearchParams(new FormData(document.querySelector('#frmCreate')))
+                    })
+                    .then((response) => {
+                        table.ajax.reload();
+                        $('#createModal').modal('hide');
+                        document.querySelector('#frmCreate').reset();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            });
 
         $(document)
             .off('click', '.btnEdit')
